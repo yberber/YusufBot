@@ -24,6 +24,13 @@ def test_ingest_creates_vectorstore(temp_dirs):
     assert vs_dir.exists()
     assert any(vs_dir.iterdir())
 
+    from langchain_huggingface import HuggingFaceEmbeddings
+    from langchain_chroma import Chroma
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    db = Chroma(persist_directory=str(vs_dir), embedding_function=embeddings)
+    results = db.similarity_search("Commerzbank", k=1)
+    assert len(results) > 0
+
 
 def test_ingest_fails_on_empty_data_dir(monkeypatch, tmp_path):
     empty_dir = tmp_path / "empty"
