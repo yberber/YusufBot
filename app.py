@@ -27,7 +27,10 @@ if prompt := st.chat_input("Ask me anything about Yusuf..."):
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = ask(prompt, chain)
+            try:
+                response = ask(prompt, chain)
+            except Exception:
+                response = "Sorry, I ran into an issue answering that. Please try again."
         st.markdown(response)
 
     st.session_state.messages.append({"role": "assistant", "content": response})
