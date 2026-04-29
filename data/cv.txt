@@ -1,0 +1,40 @@
+YUSUF BERBER
+Data Science Enthusiast | yusufberber19@gmail.com
+
+EDUCATION
+B.Sc. in [Your Degree] — [Your University], [Year]
+- Relevant coursework: Machine Learning, Statistics, Data Engineering, Big Data Technologies
+- Thesis: [Your thesis topic if applicable]
+
+TECHNICAL SKILLS
+- Programming: Python (pandas, numpy, scikit-learn, PyTorch), SQL, R
+- Big Data: Spark, Hadoop, Hive
+- Cloud & Tools: Azure / AWS, Docker, Git, Jupyter
+- Machine Learning: Supervised & unsupervised learning, NLP, time series analysis
+- Visualization: Matplotlib, Seaborn, Tableau, Power BI
+
+WORK EXPERIENCE
+[Role] — [Company], [Start] – [End]
+- [Describe what you did with data]
+- [Any ML model you built or contributed to]
+- [Tools or technologies used]
+
+PROJECTS
+[Project Name]
+- [Short description of the project, dataset used, and outcome]
+- Technologies: Python, scikit-learn, [other tools]
+
+[Project Name]
+- [Short description]
+- Technologies: [tools]
+
+LANGUAGES
+- [Language 1]: Native
+- [Language 2]: Fluent
+- German: [Your level]
+- English: Fluent
+
+INTERESTS
+- Data-driven decision making in finance
+- Large-scale data processing and distributed computing
+- Machine learning model deployment and MLOps

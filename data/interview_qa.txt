@@ -1,0 +1,35 @@
+Q: Why do you want to work at Commerzbank?
+A: I want to work at Commerzbank because it is one of Germany's most established banks with a clear commitment to digital transformation. The Big Data & Advanced Analytics team sits at the intersection of finance and technology, which is exactly where I want to build my career. I am particularly drawn to working on real-world financial data at scale — the complexity and impact of the problems here is something I cannot find in a purely tech-oriented company.
+
+Q: Why do you want to work in this position — Trainee Data Science in Big Data & Advanced Analytics?
+A: This trainee position is a perfect fit for where I am in my career. I have built a solid foundation in data science through my studies and projects, and now I want to apply that in a structured, high-impact environment. The Big Data & Advanced Analytics team works on challenges that directly affect business decisions — fraud detection, risk modelling, customer analytics — and I want to be part of that. The trainee format also means I will be exposed to different areas and can grow quickly.
+
+Q: What experience do you have with big data technologies?
+A: During my studies I worked with Apache Spark for distributed data processing as part of a project on [describe project briefly]. I have hands-on experience with SQL at scale and have used cloud platforms such as [Azure/AWS] for storing and processing large datasets. I understand the fundamentals of distributed computing and am comfortable working with data that does not fit in memory.
+
+Q: Tell me about a data science project you are proud of.
+A: I am particularly proud of [project name], where I [describe what you did, what data you used, what problem you solved]. The challenge was [describe challenge]. I approached it by [describe your approach]. The result was [describe the outcome — accuracy improvement, business impact, etc.]. It taught me a lot about [key learning].
+
+Q: How do you handle messy or incomplete data?
+A: In my experience, most real-world data is messy. My approach is to first understand the source and reason for the missing or incorrect data before deciding how to handle it. Depending on the context, I might impute missing values, remove rows, or engineer features that encode the missingness itself as information. I always document these decisions and check whether they introduce bias into downstream models.
+
+Q: Where do you see yourself in five years?
+A: In five years I see myself as a senior data scientist or analytics lead who bridges the gap between raw data and business decisions. I want to have deep expertise in financial data and have contributed to products or models that are actually in production. Commerzbank's scale gives me the opportunity to work on meaningful problems early in my career, which is the fastest path to that goal.
+
+Q: What do you know about Commerzbank's digital strategy?
+A: Commerzbank has been investing heavily in its digital transformation under the "Strategy 2027" initiative, focusing on becoming a more data-driven and digitally agile bank. The bank has made significant investments in cloud infrastructure and data platforms to enable faster analytics and better customer experiences. I find it particularly interesting that Commerzbank is building these capabilities in-house rather than fully outsourcing, which means data scientists here have real ownership over the tools and models they build.
+
+Q: How do you stay up to date with developments in data science?
+A: I follow research through arXiv and Papers With Code, and I regularly read blogs from companies like Hugging Face, Meta AI Research, and Towards Data Science. I also work on personal projects — like this chatbot — to experiment with new tools. Recently I have been exploring LLMs and retrieval-augmented generation, which is how this YusufBot was built.
+
+Q: What are your strengths?
+A: My main strength is being able to move from a business question to a working solution quickly — I am comfortable going from exploratory analysis to a prototype model. I am also good at explaining technical results to non-technical stakeholders. And I am genuinely curious: when I encounter a problem I do not know how to solve, I find it motivating rather than frustrating.
+
+Q: What is your biggest weakness?
+A: I sometimes spend too long optimising a solution before sharing it. I have learned to set time-boxed checkpoints and share intermediate results early to get feedback, rather than waiting until something feels polished. Iterating with stakeholders early almost always leads to a better final result anyway.
+
+Q: Why data science and not software engineering?
+A: I enjoy both, but data science appeals to me because the problems are inherently uncertain — you are working with incomplete information and trying to extract signal from noise. That requires both technical skill and judgement, and I find that combination more engaging than pure engineering. That said, I believe good data scientists need to be strong engineers, and I invest in that side of my skills as well.
+
+Q: Do you have experience with machine learning in production?
+A: [Describe any production experience, or if none:] My experience so far has been primarily in research and project settings, but I have studied MLOps practices — model versioning, monitoring, and deployment pipelines — and I built [any project with deployment]. One of the things I am most excited about in this role is gaining hands-on experience deploying models that real users depend on.
