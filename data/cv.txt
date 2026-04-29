@@ -1,40 +1,51 @@
 YUSUF BERBER
-Data Science Enthusiast | yusufberber19@gmail.com
+GitHub: https://github.com/yberber
+
+SUMMARY
+I am a data science and software engineering professional completing an M.Sc. in Data and Computer Science at Heidelberg University (Grade: 1.3, Very Good). I hold a B.Sc. in Software Engineering from Heilbronn University (Grade: 1.4, Very Good). I have hands-on industry experience building LLM-powered applications and data pipelines, including publishing an official open-source LangChain integration package at SAP SE. My master's thesis achieved State-of-the-Art results on benchmark emotion recognition datasets by combining fine-tuned LLMs with RAG. I am fluent in Turkish (native), German (C2), and English (C1/C2).
 
 EDUCATION
-B.Sc. in [Your Degree] — [Your University], [Year]
-- Relevant coursework: Machine Learning, Statistics, Data Engineering, Big Data Technologies
-- Thesis: [Your thesis topic if applicable]
+
+Heidelberg University | Heidelberg, Germany
+M.Sc. Data and Computer Science
+October 2023 – January 2026 | Grade: 1.3 (Very Good)
+
+Heilbronn University | Heilbronn, Germany
+B.Sc. Software Engineering
+March 2019 – August 2023 | Grade: 1.4 (Very Good)
 
 TECHNICAL SKILLS
-- Programming: Python (pandas, numpy, scikit-learn, PyTorch), SQL, R
-- Big Data: Spark, Hadoop, Hive
-- Cloud & Tools: Azure / AWS, Docker, Git, Jupyter
-- Machine Learning: Supervised & unsupervised learning, NLP, time series analysis
-- Visualization: Matplotlib, Seaborn, Tableau, Power BI
 
-WORK EXPERIENCE
-[Role] — [Company], [Start] – [End]
-- [Describe what you did with data]
-- [Any ML model you built or contributed to]
-- [Tools or technologies used]
+Programming Languages: Python (Expert), Java (Expert), C/C++, C#, Go, JavaScript, TypeScript
+Machine Learning & AI: PyTorch, TensorFlow, JAX, HuggingFace, LangChain, Scikit-learn, Pandas, Apache Spark
+Infrastructure & Tools: Linux/Bash, Docker, Git, GitHub Actions, Jenkins (CI/CD), AWS, Jira, Flutter
+Languages: Turkish (Native), German (C2), English (C1/C2)
 
-PROJECTS
-[Project Name]
-- [Short description of the project, dataset used, and outcome]
-- Technologies: Python, scikit-learn, [other tools]
+PROFESSIONAL EXPERIENCE
 
-[Project Name]
-- [Short description]
-- Technologies: [tools]
+SAP SE | Walldorf, Germany
+Working Student – Software Engineering | November 2024 – May 2025
+I built and released the official LangChain integration package "langchain-hana" for SAP HANA Cloud, enabling vector search and knowledge-graph-backed retrieval in LLM applications. The package is publicly available at https://github.com/SAP/langchain-integration-for-sap-hana-cloud. I implemented keyword search, in-database embeddings, and graph-based retrieval with full unit test coverage. I also automated CI/CD quality gates with GitHub Actions and contributed upstream feature parity to both LangChain (Python) and LangChainJS (TypeScript).
 
-LANGUAGES
-- [Language 1]: Native
-- [Language 2]: Fluent
-- German: [Your level]
-- English: Fluent
+Vector Informatik GmbH | Stuttgart, Germany
+Working Student – Software Engineering | April 2022 – August 2022
+Intern – Software Engineering | March 2021 – September 2021
+I contributed to the ELEKTRA process tool within a high-performance automotive software platform. I implemented and maintained server-side reports and validators in Java, developed client-side features in C#, and maintained GUI tests with Ranorex.
 
-INTERESTS
-- Data-driven decision making in finance
-- Large-scale data processing and distributed computing
-- Machine learning model deployment and MLOps
+SELECTED PROJECTS
+
+Emotion Detection in Conversational AI (Master's Thesis) | 2025
+GitHub: https://github.com/yberber/mm-rag-erc
+My master's thesis focused on multimodal emotion recognition in conversations. I fine-tuned LLaMA-3.1-8B-Instruct using two-phase QLoRA with systematic ablations, and combined engineered audio features with retrieval-augmented in-context exemplars (RAG). The result achieved State-of-the-Art (SOTA) performance on the MELD and IEMOCAP benchmark datasets.
+
+Anime Face Generator Pipeline | 2024
+GitHub: https://github.com/yberber/anime-face-gan-pipeline
+I built and trained a GAN-based image generation pipeline using DCGAN and WGAN-GP with PyTorch, combined with Real-ESRGAN for upscaling.
+
+RAGMedAssist – Medical Chatbot | 2023–2024
+GitHub: https://github.com/Matteo-Malve/RAGMedAssist-INLPT-WS2023
+I co-developed an end-to-end LLM-powered medical assistant with retrieval-augmented generation pipelines for the medical domain.
+
+AlphaZero for International Checkers (Bachelor's Thesis) | 2023
+GitHub: https://github.com/yberber/Checkers-AI-Minimax-Neural_Network
+I re-engineered the AlphaZero algorithm for International Checkers using Monte Carlo Tree Search (MCTS) and ResNets, and built a simulation environment to generate synthetic training data via self-play.
