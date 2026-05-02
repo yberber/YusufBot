@@ -8,14 +8,10 @@ from rag import create_retriever, ask, GROQ_MODELS
 from usage_tracker import load_daily_tokens, add_tokens
 from audio import transcribe, synthesize, STT_MODELS, TTS_VOICES
 
-st.set_page_config(page_title="YusufBot", page_icon="🤖", layout="centered")
+import transformers
+transformers.logging.set_verbosity_error()
 
-# Shrink every <audio> element to show only the play button
-st.markdown("""
-<style>
-audio { height: 30px !important; width: 48px !important; }
-</style>
-""", unsafe_allow_html=True)
+st.set_page_config(page_title="YusufBot", page_icon="🤖", layout="centered")
 
 # ── Sidebar ──────────────────────────────────────────────────────────────────
 with st.sidebar:
@@ -78,7 +74,7 @@ for message in st.session_state.messages:
             has_tokens = bool(message.get("tokens"))
             has_audio = message.get("audio") is not None
             if has_tokens or has_audio:
-                cap_col, play_col = st.columns([8, 1])
+                cap_col, play_col = st.columns([5, 2])
                 with cap_col:
                     if has_tokens:
                         st.caption(f"🔢 {message['tokens']:,} tokens used for this message")
@@ -89,7 +85,7 @@ for message in st.session_state.messages:
 # ── Input area ───────────────────────────────────────────────────────────────
 prompt = None
 
-# Small mic toggle button — sits just above the chat input bar
+# Small mic toggle — sits just above the sticky chat input bar
 mic_col, _ = st.columns([1, 10])
 with mic_col:
     mic_label = "🔴" if st.session_state.show_mic else "🎤"
@@ -123,7 +119,7 @@ if prompt:
         st.markdown(prompt)
 
     audio_response = None
-    tts_rate_limited = False
+    tts_warning = None
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
@@ -141,16 +137,19 @@ if prompt:
             try:
                 audio_response = synthesize(response, selected_voice)
             except groq_lib.RateLimitError:
-                tts_rate_limited = True
-            except Exception:
-                pass
+                tts_warning = "⚠️ TTS rate limit reached — no audio for this response"
+            except Exception as e:
+                tts_warning = f"⚠️ TTS error: {e}"
 
-        cap_col, play_col = st.columns([8, 1])
+        cap_col, play_col = st.columns([5, 2])
         with cap_col:
+            caption_parts = []
             if tokens:
-                st.caption(f"🔢 {tokens:,} tokens used for this message")
-            if tts_rate_limited:
-                st.caption("⚠️ TTS rate limit reached — no audio for this response")
+                caption_parts.append(f"🔢 {tokens:,} tokens used for this message")
+            if tts_warning:
+                caption_parts.append(tts_warning)
+            if caption_parts:
+                st.caption(" · ".join(caption_parts))
         with play_col:
             if audio_response:
                 st.audio(audio_response, format="audio/wav")
