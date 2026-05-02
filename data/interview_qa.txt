@@ -1,44 +1,62 @@
-Q: Why do you want to work at Commerzbank?
-A: I want to work at Commerzbank because it is one of Germany's most important banks and is actively investing in its data and analytics capabilities. The Big Data & Advanced Analytics team works on problems that directly influence business decisions at scale — and that combination of real-world impact and technical depth is exactly what I am looking for. I am also based in Germany and have been building my career here, so contributing to a major German institution feels like a natural fit.
+Q: Could you tell us a little about yourself and your background?
+A: My name is Yusuf, and I am 27 years old. I was born in Turkmenistan, where I lived for six years. After that, I spent four years in Turkey, and then eight years in North Macedonia. In 2017, due to political reasons, I moved to Germany with my parents. This was a turning point. Before arriving, I spoke no German or English, but I committed to setting meaningful goals. I reached B2 in German within ten months mostly through self-study, and subsequently completed both my Bachelor's and Master's degrees in Germany with top grades.
 
-Q: Why do you want to work in this position — Trainee Data Science in Big Data & Advanced Analytics?
-A: This role matches exactly where my skills and interests intersect. During my master's thesis I worked deeply with LLMs, RAG systems, and large-scale evaluation — and at SAP I built production-grade LangChain integrations for enterprise data pipelines. The Trainee Data Science position gives me the opportunity to apply that foundation to financial data at a scale and with a business impact I cannot find in a smaller company. The trainee format also means structured exposure across the team, which accelerates learning faster than diving into one narrow area.
+Q: How many languages do you speak?
+A: I am fluent in three languages. Turkish is my native language, I speak German at a C2 level, and my English is at a C1/C2 level.
 
-Q: Tell me about yourself.
-A: I am Yusuf Berber, a data scientist and software engineer finishing my M.Sc. in Data and Computer Science at Heidelberg University with a 1.3 grade. Before that I completed a B.Sc. in Software Engineering at Heilbronn University with a 1.4. I have been working as a working student at SAP SE where I built and published the official LangChain integration for SAP HANA Cloud — that package enables vector search and knowledge-graph-based retrieval in LLM applications and is now used by other teams. My master's thesis achieved State-of-the-Art results on emotion recognition benchmarks by combining fine-tuned LLaMA models with retrieval-augmented generation. I am fluent in Turkish, German (C2), and English (C1/C2).
+Q: What are your hobbies and interests outside of work?
+A: In my free time, I enjoy doing calisthenics and running. I also highly value reading, self-learning, and maintaining a disciplined lifestyle.
 
-Q: What experience do you have with big data technologies?
-A: I have practical experience with Apache Spark and work regularly with large-scale data pipelines. At SAP I worked with SAP HANA Cloud, which is a high-performance in-memory database used for large datasets in enterprise environments — I implemented in-database embedding generation and vector search, which requires handling data at scale efficiently. My M.Sc. curriculum at Heidelberg included data engineering and distributed systems, and I have used Spark in project work. My tech stack also includes Python Expert-level skills with Pandas, and I am comfortable with AWS infrastructure.
+Q: What is your educational background?
+A: I hold a Bachelor of Science in Software Engineering from Heilbronn University, which I completed with a grade of 1.4. I recently completed my Master of Science in Data and Computer Science at Heidelberg University, graduating with a grade of 1.3.
 
-Q: Tell me about your master's thesis.
-A: My thesis is titled "Emotion Detection in Conversational AI" and focuses on multimodal emotion recognition in conversations. I fine-tuned LLaMA-3.1-8B-Instruct using a two-phase QLoRA approach, which reduces memory requirements while maintaining model quality, and I combined it with retrieval-augmented in-context exemplars — essentially using RAG to retrieve similar emotional examples to improve prediction. I also engineered audio features from speech and fused them with the language model. The system achieved State-of-the-Art performance on the MELD and IEMOCAP benchmarks, which are the standard evaluation datasets in this field. The code is open-source at github.com/yberber/mm-rag-erc.
+Q: Did you face any challenges during your studies?
+A: Yes, starting my German-taught Bachelor's program in 2019 was quite challenging due to the language barrier, as I had only recently moved to Germany. However, I persevered, relied on my discipline, and graduated with a 1.4. For my Master's, I transitioned to an English-taught program to further improve my English and deepen my theoretical knowledge in artificial intelligence.
 
-Q: Tell me about your experience at SAP.
-A: At SAP SE I worked as a working student in software engineering from November 2024. My main project was building the official LangChain integration package for SAP HANA Cloud — "langchain-hana" — which is now released as an open-source package under the SAP GitHub organisation. The package lets developers use SAP HANA Cloud as a vector store and knowledge graph backend in LangChain-based LLM applications. I implemented keyword search, in-database embedding generation, and graph-based retrieval with full test coverage. I also automated the CI/CD pipeline with GitHub Actions and contributed upstream to both the Python and TypeScript LangChain repositories to maintain feature parity.
+Q: What programming languages are you proficient in?
+A: I am an expert in Python and Java. I also have strong experience with C/C++, C#, Go, JavaScript, and TypeScript.
 
-Q: What are your strongest technical skills?
-A: My strongest skills are Python and machine learning. I have expert-level Python experience and have used it across the full ML lifecycle — from data preprocessing with Pandas and Spark, to model training with PyTorch and HuggingFace, to production deployment with Docker and CI/CD pipelines. I also have strong skills in LLM engineering: fine-tuning (QLoRA), RAG system design, and LangChain-based application development. On the infrastructure side I am comfortable with Linux, Docker, Git, and GitHub Actions. I also have expert-level Java from my time at Vector Informatik and my bachelor's degree.
+Q: What machine learning and AI frameworks do you use?
+A: I am highly experienced with PyTorch, TensorFlow, JAX, HuggingFace, LangChain, Scikit-learn, Pandas, and Apache Spark.
 
-Q: What do you know about RAG — retrieval-augmented generation?
-A: RAG combines a retrieval system with a generative language model. Instead of relying solely on what the model learned during training, you retrieve relevant documents or examples from an external knowledge base at inference time and include them in the prompt as context. This makes the model's answers grounded in up-to-date, domain-specific information. I have deep hands-on experience with RAG — my master's thesis used RAG for emotion recognition by retrieving emotionally similar examples to guide the model, and at SAP I built vector search and knowledge-graph retrieval backends for exactly this use case. I also built YusufBot, the chatbot you are currently talking to, using RAG with LangChain, ChromaDB, and Groq.
+Q: What infrastructure and DevOps tools are you familiar with?
+A: I have hands-on experience with Linux/Bash, Docker, Git, GitHub Actions, Jenkins for CI/CD, AWS, Jira, and Flutter.
 
-Q: Where do you see yourself in five years?
-A: In five years I see myself as a senior data scientist or ML engineer who has shipped models that are in production and directly influencing business outcomes. I want to have deep expertise in financial data and large-scale analytics. The Commerzbank trainee programme is an ideal starting point because it gives me structured exposure to how data science works in a regulated, high-stakes environment — which is the fastest path to meaningful seniority.
+Q: Describe your experience working at SAP SE.
+A: At SAP SE, I worked as a Software Engineering Working Student from November 2024 to May 2025. I built and released the official LangChain integration package, "langchain-hana", for SAP HANA Cloud. This enabled vector search and knowledge-graph-backed retrieval in LLM applications. I implemented keyword search, in-database embeddings, and graph-based retrieval with full unit test coverage, and automated CI/CD quality gates using GitHub Actions.
 
-Q: What are your strengths?
-A: My biggest strength is moving quickly from a problem to a working solution. At SAP I went from onboarding to shipping a released open-source package within a few months. I am also strong at bridging research and engineering — my thesis work required both understanding the latest ML research and implementing it cleanly enough to reproduce SOTA results. And I am comfortable contributing to open-source codebases, which means I can work effectively with existing infrastructure rather than reinventing things.
+Q: What were your responsibilities at Vector Informatik GmbH?
+A: I worked at Vector Informatik first as an intern, then as a working student from March 2021 to August 2022. I contributed to the ELEKTRA process tool for a high-performance automotive software platform. I implemented server-side reports and validators in Java, developed client-side features in C#, and maintained GUI tests using Ranorex.
+
+Q: What was the focus of your Master's thesis?
+A: My Master's thesis focused on multimodal emotion recognition in conversations. I aimed to identify the predominant emotion of an utterance within a conversation. I fine-tuned the LLaMA-3.1-8B-Instruct model using two-phase QLoRA with systematic ablations. By combining engineered audio features with retrieval-augmented in-context exemplars (RAG), I achieved State-of-the-Art (SOTA) performance on the MELD and IEMOCAP benchmark datasets.
+
+Q: Tell us about the AI agent you developed for your Bachelor's thesis.
+A: For my Bachelor's thesis, I re-engineered the AlphaZero algorithm from Google DeepMind to play International Checkers. I used Monte Carlo Tree Search (MCTS) and ResNets, and built a simulation environment to generate synthetic training data via self-play. After about 15 days of self-play and training cycles, the agent played quite well—not superhuman, but highly convincing given the computational resources available.
+
+Q: Have you built any end-to-end LLM applications?
+A: Yes, I co-developed RAGMedAssist, an end-to-end LLM-powered medical assistant. It utilizes retrieval-augmented generation pipelines tailored specifically for the medical domain to provide accurate conversational assistance.
+
+Q: What is the Anime Face Generator Pipeline?
+A: It is a 2024 project where I built and trained a GAN-based image generation pipeline. I used DCGAN and WGAN-GP with PyTorch to generate images, and combined it with Real-ESRGAN for high-quality image upscaling.
+
+Q: Describe a difficult situation you faced and how you dealt with it.
+A: During my Bachelor's program, I was part of a five-person group developing a game for a 14-credit course. Early on, I noticed some team members lacked a strong programming foundation, leading to frequent code errors that affected the whole program. Instead of fixing everything myself, I took the time to mentor them. When mistakes happened, I explained the problems and taught them how to solve them. Within a few months, they became confident and motivated, and we delivered a high-quality game. I learned that a motivated, capable team is much more valuable than just delivering a project quickly.
+
+Q: What are your greatest strengths?
+A: My greatest strengths are my determination and my passion for learning. Moving to Germany at 18 without knowing the language and setting a goal to specialize in AI was a massive challenge. It taught me to never give up. This drive kept me motivated to learn German, improve my English, excel in my studies, and build deep expertise in AI.
 
 Q: What is your biggest weakness?
-A: I sometimes spend too long polishing a solution before sharing it. I have learned to set time-boxed checkpoints and share intermediate results early to collect feedback — iterating with stakeholders earlier almost always produces a better outcome faster. This is something I actively practiced at SAP.
+A: My weakness is that I sometimes find it difficult to leave an unsolved problem aside. Because I am deeply interested in complex challenges, I have occasionally worked much longer hours than expected on university or work projects to find the perfect solution. However, I am actively learning to prioritize better and take conscious breaks to maintain long-term productivity, while still keeping my strong drive for quality.
 
-Q: Do you have any questions for us?
-A: Yes — I would love to understand how the Big Data & Advanced Analytics team currently structures the handoff between data scientists and data engineers, and whether data scientists here are expected to own their models through to production or work with a separate MLOps function. I am also curious about the kinds of data sources the team works with most — transactional data, market data, customer data — and how much of the tooling is built internally versus using managed cloud services.
+Q: What do you think are the most important characteristics of a project manager or team leader?
+A: A team leader must have excellent communication skills and, most importantly, lead by example, especially during difficult times. I always ask myself: if I were a commander in a difficult situation, would people willingly follow me? A leader should constantly evaluate if they are setting a standard that inspires others to follow.
 
-Q: Why data science and not software engineering?
-A: I started in software engineering and I am glad I did — it gave me strong fundamentals that make me a better data scientist. But I gravitated toward data science because the problems are inherently uncertain. In software engineering you usually know what correct output looks like; in data science you are extracting signal from noisy, incomplete data and making probabilistic decisions. I find that combination of rigour and uncertainty more engaging. That said, I think the best data scientists are also strong engineers, and I invest in that side of my skills — which is why I can build things like the LangChain integration at SAP or this chatbot end-to-end.
+Q: Why do you want to work with Artificial Intelligence?
+A: AI combines two things that are very important to me: creating meaningful impact and continuous learning. First, AI is incredibly powerful. If developed responsibly, it can optimize infrastructure and healthcare, improving the lives of billions. Second, it is highly dynamic. New models and algorithms appear constantly, which requires continuous curiosity and adaptation, something I thoroughly enjoy.
 
-Q: How do you handle messy or incomplete data?
-A: My first step is always to understand why the data is messy or missing — is it a collection issue, a schema mismatch, or is the missingness itself informative? That understanding determines how I handle it. For missing values I consider imputation, flagging as a separate feature, or removal depending on the downstream model and the volume affected. At SAP I worked with enterprise data that often came from multiple heterogeneous systems, so cleaning and aligning schemas was a regular part of the work. I always document data quality decisions so they are reproducible and auditable.
+Q: What is your ultimate career goal?
+A: My goal is to specialize deeply in AI and make meaningful contributions to its advancement. I don't just want to be an end-user of AI; I want to help shape its development in ways that benefit humanity and make the world a more equitable place.
 
-Q: What programming languages do you know?
-A: I am most proficient in Python and Java, both at expert level. I also have experience with C, C++, C#, Go, JavaScript, and TypeScript. For data science work Python is my primary language — I use it for everything from data processing to model training to deployment. I have contributed TypeScript to the LangChainJS repository as part of my SAP work, so I am comfortable switching between languages depending on the context.
+Q: Why are you applying for this trainee position?
+A: There are three main reasons. First, the mentorship aspect is crucial; having guidance from experienced professionals helps accelerate growth and avoid common pitfalls. Second, I highly value an international environment and the chance to rotate through different stations, which broadens perspectives and fosters adaptability. Finally, I fully align with the expectations of this role. AI is my passion, as demonstrated by my theses, my work at SAP, and my academic focus, and I want to shape the future of this technology within a leading organization.

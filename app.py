@@ -52,6 +52,8 @@ if "messages" not in st.session_state:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+        if message["role"] == "assistant" and message.get("tokens"):
+            st.caption(f"🔢 {message['tokens']:,} tokens used for this message")
 
 if prompt := st.chat_input("Ask me anything about Yusuf..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -62,10 +64,14 @@ if prompt := st.chat_input("Ask me anything about Yusuf..."):
         with st.spinner("Thinking..."):
             try:
                 response, usage = ask(prompt, selected_model, retriever)
-                st.session_state.session_tokens += usage["total_tokens"]
+                tokens = usage["total_tokens"]
+                st.session_state.session_tokens += tokens
             except Exception:
                 response = "Sorry, I ran into an issue answering that. Please try again."
+                tokens = 0
         st.markdown(response)
+        if tokens:
+            st.caption(f"🔢 {tokens:,} tokens used for this message")
 
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.messages.append({"role": "assistant", "content": response, "tokens": tokens})
     st.rerun()
