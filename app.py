@@ -3,6 +3,7 @@ os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 
 import streamlit as st
 from rag import create_retriever, ask, GROQ_MODELS
+from usage_tracker import load_daily_tokens, add_tokens
 
 st.set_page_config(page_title="YusufBot", page_icon="🤖", layout="centered")
 
@@ -17,13 +18,11 @@ with st.sidebar:
 
     st.divider()
 
-    st.subheader("📊 Session Token Usage")
-    if "session_tokens" not in st.session_state:
-        st.session_state.session_tokens = 0
-    session_tokens = st.session_state.session_tokens
-    st.metric("Tokens used", f"{session_tokens:,}")
-    st.caption(f"Daily limit ({selected_label}): {daily_limit:,}")
-    st.progress(min(session_tokens / daily_limit, 1.0))
+    st.subheader("📊 Daily Token Usage")
+    daily_tokens = load_daily_tokens()
+    st.metric("Tokens used today", f"{daily_tokens:,}")
+    st.caption(f"Daily limit ({selected_label}): {daily_limit:,} · resets at midnight UTC")
+    st.progress(min(daily_tokens / daily_limit, 1.0))
 
     st.divider()
 
@@ -65,7 +64,7 @@ if prompt := st.chat_input("Ask me anything about Yusuf..."):
             try:
                 response, usage = ask(prompt, selected_model, retriever)
                 tokens = usage["total_tokens"]
-                st.session_state.session_tokens += tokens
+                add_tokens(tokens)
             except Exception:
                 response = "Sorry, I ran into an issue answering that. Please try again."
                 tokens = 0
