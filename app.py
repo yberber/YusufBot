@@ -10,6 +10,13 @@ from audio import transcribe, synthesize, STT_MODELS, TTS_VOICES
 
 st.set_page_config(page_title="YusufBot", page_icon="🤖", layout="centered")
 
+# Shrink every <audio> element to show only the play button
+st.markdown("""
+<style>
+audio { height: 30px !important; width: 48px !important; }
+</style>
+""", unsafe_allow_html=True)
+
 # ── Sidebar ──────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.header("⚙️ Settings")
@@ -60,34 +67,50 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 if "last_audio_hash" not in st.session_state:
     st.session_state.last_audio_hash = None
+if "show_mic" not in st.session_state:
+    st.session_state.show_mic = False
 
 # ── Chat history ─────────────────────────────────────────────────────────────
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
         if message["role"] == "assistant":
-            if message.get("tokens"):
-                st.caption(f"🔢 {message['tokens']:,} tokens used for this message")
-            if message.get("audio"):
-                st.audio(message["audio"], format="audio/wav")
+            has_tokens = bool(message.get("tokens"))
+            has_audio = message.get("audio") is not None
+            if has_tokens or has_audio:
+                cap_col, play_col = st.columns([8, 1])
+                with cap_col:
+                    if has_tokens:
+                        st.caption(f"🔢 {message['tokens']:,} tokens used for this message")
+                with play_col:
+                    if has_audio:
+                        st.audio(message["audio"], format="audio/wav")
 
 # ── Input area ───────────────────────────────────────────────────────────────
 prompt = None
 
-audio_input = st.audio_input("🎤 Record your question")
-if audio_input:
-    raw = audio_input.read()
-    audio_hash = hashlib.md5(raw).hexdigest()
-    if audio_hash != st.session_state.last_audio_hash:
-        st.session_state.last_audio_hash = audio_hash
-        with st.spinner("Transcribing..."):
-            try:
-                prompt = transcribe(raw, audio_input.name or "audio.webm", selected_stt)
-                st.info(f"🎤 *Transcribed:* {prompt}")
-            except groq_lib.RateLimitError:
-                st.warning("⚠️ Speech-to-text rate limit reached. Please type your question or wait a moment.")
-            except Exception:
-                st.error("⚠️ Could not transcribe audio. Please try again.")
+# Small mic toggle button — sits just above the chat input bar
+mic_col, _ = st.columns([1, 10])
+with mic_col:
+    mic_label = "🔴" if st.session_state.show_mic else "🎤"
+    if st.button(mic_label, help="Toggle voice input", key="mic_toggle"):
+        st.session_state.show_mic = not st.session_state.show_mic
+
+if st.session_state.show_mic:
+    audio_input = st.audio_input("Record your question", label_visibility="collapsed")
+    if audio_input:
+        raw = audio_input.read()
+        audio_hash = hashlib.md5(raw).hexdigest()
+        if audio_hash != st.session_state.last_audio_hash:
+            st.session_state.last_audio_hash = audio_hash
+            with st.spinner("Transcribing..."):
+                try:
+                    prompt = transcribe(raw, audio_input.name or "audio.webm", selected_stt)
+                    st.info(f"🎤 *Transcribed:* {prompt}")
+                except groq_lib.RateLimitError:
+                    st.warning("⚠️ Speech-to-text rate limit reached. Please type your question or wait a moment.")
+                except Exception:
+                    st.error("⚠️ Could not transcribe audio. Please try again.")
 
 text_prompt = st.chat_input("Or type your question...")
 if text_prompt:
@@ -100,6 +123,8 @@ if prompt:
         st.markdown(prompt)
 
     audio_response = None
+    tts_rate_limited = False
+
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             try:
@@ -109,18 +134,26 @@ if prompt:
             except Exception:
                 response = "Sorry, I ran into an issue answering that. Please try again."
                 tokens = 0
+
         st.markdown(response)
-        if tokens:
-            st.caption(f"🔢 {tokens:,} tokens used for this message")
 
         with st.spinner("Generating audio..."):
             try:
                 audio_response = synthesize(response, selected_voice)
-                st.audio(audio_response, format="audio/wav")
             except groq_lib.RateLimitError:
-                st.warning("⚠️ Text-to-speech rate limit reached. No audio for this response.")
+                tts_rate_limited = True
             except Exception:
                 pass
+
+        cap_col, play_col = st.columns([8, 1])
+        with cap_col:
+            if tokens:
+                st.caption(f"🔢 {tokens:,} tokens used for this message")
+            if tts_rate_limited:
+                st.caption("⚠️ TTS rate limit reached — no audio for this response")
+        with play_col:
+            if audio_response:
+                st.audio(audio_response, format="audio/wav")
 
     st.session_state.messages.append({
         "role": "assistant",
