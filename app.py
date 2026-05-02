@@ -1,9 +1,12 @@
 import os
+import hashlib
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 
+import groq as groq_lib
 import streamlit as st
 from rag import create_retriever, ask, GROQ_MODELS
 from usage_tracker import load_daily_tokens, add_tokens
+from audio import transcribe, synthesize, STT_MODELS, TTS_VOICES
 
 st.set_page_config(page_title="YusufBot", page_icon="🤖", layout="centered")
 
@@ -12,9 +15,17 @@ with st.sidebar:
     st.header("⚙️ Settings")
 
     model_labels = {v["label"]: k for k, v in GROQ_MODELS.items()}
-    selected_label = st.selectbox("Model", list(model_labels.keys()))
+    selected_label = st.selectbox("LLM Model", list(model_labels.keys()))
     selected_model = model_labels[selected_label]
     daily_limit = GROQ_MODELS[selected_model]["daily_limit"]
+
+    st.divider()
+
+    st.subheader("🎙️ Voice")
+    stt_labels = {v: k for k, v in STT_MODELS.items()}
+    selected_stt_label = st.selectbox("Speech-to-Text", list(stt_labels.keys()))
+    selected_stt = stt_labels[selected_stt_label]
+    selected_voice = st.selectbox("TTS Voice", TTS_VOICES)
 
     st.divider()
 
@@ -47,18 +58,48 @@ retriever = load_retriever()
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
+if "last_audio_hash" not in st.session_state:
+    st.session_state.last_audio_hash = None
 
+# ── Chat history ─────────────────────────────────────────────────────────────
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-        if message["role"] == "assistant" and message.get("tokens"):
-            st.caption(f"🔢 {message['tokens']:,} tokens used for this message")
+        if message["role"] == "assistant":
+            if message.get("tokens"):
+                st.caption(f"🔢 {message['tokens']:,} tokens used for this message")
+            if message.get("audio"):
+                st.audio(message["audio"], format="audio/wav")
 
-if prompt := st.chat_input("Ask me anything about Yusuf..."):
+# ── Input area ───────────────────────────────────────────────────────────────
+prompt = None
+
+audio_input = st.audio_input("🎤 Record your question")
+if audio_input:
+    raw = audio_input.read()
+    audio_hash = hashlib.md5(raw).hexdigest()
+    if audio_hash != st.session_state.last_audio_hash:
+        st.session_state.last_audio_hash = audio_hash
+        with st.spinner("Transcribing..."):
+            try:
+                prompt = transcribe(raw, audio_input.name or "audio.webm", selected_stt)
+                st.info(f"🎤 *Transcribed:* {prompt}")
+            except groq_lib.RateLimitError:
+                st.warning("⚠️ Speech-to-text rate limit reached. Please type your question or wait a moment.")
+            except Exception:
+                st.error("⚠️ Could not transcribe audio. Please try again.")
+
+text_prompt = st.chat_input("Or type your question...")
+if text_prompt:
+    prompt = text_prompt
+
+# ── Process prompt ───────────────────────────────────────────────────────────
+if prompt:
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
+    audio_response = None
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             try:
@@ -72,5 +113,19 @@ if prompt := st.chat_input("Ask me anything about Yusuf..."):
         if tokens:
             st.caption(f"🔢 {tokens:,} tokens used for this message")
 
-    st.session_state.messages.append({"role": "assistant", "content": response, "tokens": tokens})
+        with st.spinner("Generating audio..."):
+            try:
+                audio_response = synthesize(response, selected_voice)
+                st.audio(audio_response, format="audio/wav")
+            except groq_lib.RateLimitError:
+                st.warning("⚠️ Text-to-speech rate limit reached. No audio for this response.")
+            except Exception:
+                pass
+
+    st.session_state.messages.append({
+        "role": "assistant",
+        "content": response,
+        "tokens": tokens,
+        "audio": audio_response,
+    })
     st.rerun()
