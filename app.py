@@ -13,6 +13,12 @@ transformers.logging.set_verbosity_error()
 
 st.set_page_config(page_title="YusufBot", page_icon="🤖", layout="centered")
 
+st.markdown("""
+<style>
+[data-testid="stSidebarNav"] { display: none; }
+</style>
+""", unsafe_allow_html=True)
+
 # ── Sidebar ──────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.header("⚙️ Settings")
@@ -48,8 +54,14 @@ with st.sidebar:
     )
 
 # ── Main ─────────────────────────────────────────────────────────────────────
-st.title("YusufBot — Ask me anything about Yusuf")
-st.caption("Yusuf is applying for Trainee Data Science in Big Data & Advanced Analytics at Commerzbank")
+title_col, cv_col = st.columns([5, 2])
+with title_col:
+    st.title("YusufBot — Ask me anything about Yusuf")
+    st.caption("Yusuf is applying for Trainee Data Science in Big Data & Advanced Analytics at Commerzbank")
+with cv_col:
+    st.write("")
+    st.write("")
+    st.page_link("pages/cv.py", label="📄 View CV", use_container_width=True)
 
 
 @st.cache_resource
